@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19fc12ad-4e0d-4f4d-829f-f4d466a1970c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sudoku/Sudoku.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sudoku/Sudoku.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sudoku/SudokuBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sudoku/SudokuBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sudoku/SudokuSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sudoku/SudokuSolver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sudoku.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sudoku.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SudokuBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SudokuBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SudokuSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SudokuSolver.java" afterDir="false" />
@@ -28,6 +23,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1gjf1nAUwWvPAPono6Rv3CZd6nX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -36,7 +32,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/CS 112" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Application.Sudoku">
     <configuration name="Sudoku" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -78,35 +74,39 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="811" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599005872909" />
-    <state width="1877" height="755" key="GridCell.Tab.0.bottom" timestamp="1599030534421">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1599065743114">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="666" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1598864639219" />
-    <state width="1237" height="77" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1280.680@1920.0.1280.680" timestamp="1598684631562" />
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1599065743114" />
+    <state width="1237" height="379" key="GridCell.Tab.0.bottom" timestamp="1599074256478">
+      <screen x="1920" y="0" width="1280" height="680" />
+    </state>
+    <state width="1493" height="649" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1599071021399" />
+    <state width="1237" height="379" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1280.680@1920.0.1280.680" timestamp="1599074256478" />
     <state width="1493" height="560" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.720.1240@0.0.1536.824" timestamp="1598891565798" />
     <state width="1493" height="343" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598884792062" />
     <state width="1877" height="755" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599030534421" />
-    <state width="1877" height="755" key="GridCell.Tab.0.center" timestamp="1599030534421">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="379" key="GridCell.Tab.0.center" timestamp="1599074256478">
+      <screen x="1920" y="0" width="1280" height="680" />
     </state>
-    <state width="1493" height="666" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1598864639219" />
-    <state width="1237" height="77" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1280.680@1920.0.1280.680" timestamp="1598684631562" />
+    <state width="1493" height="649" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1599071021398" />
+    <state width="1237" height="379" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1280.680@1920.0.1280.680" timestamp="1599074256478" />
     <state width="1493" height="560" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.720.1240@0.0.1536.824" timestamp="1598891565798" />
     <state width="1493" height="343" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598884792061" />
     <state width="1877" height="755" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599030534421" />
-    <state width="1877" height="755" key="GridCell.Tab.0.left" timestamp="1599030534421">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="379" key="GridCell.Tab.0.left" timestamp="1599074256478">
+      <screen x="1920" y="0" width="1280" height="680" />
     </state>
-    <state width="1493" height="666" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1598864639218" />
-    <state width="1237" height="77" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1280.680@1920.0.1280.680" timestamp="1598684631562" />
+    <state width="1493" height="649" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1599071021398" />
+    <state width="1237" height="379" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1280.680@1920.0.1280.680" timestamp="1599074256478" />
     <state width="1493" height="560" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.720.1240@0.0.1536.824" timestamp="1598891565798" />
     <state width="1493" height="343" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598884792061" />
     <state width="1877" height="755" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599030534421" />
-    <state width="1877" height="755" key="GridCell.Tab.0.right" timestamp="1599030534421">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="379" key="GridCell.Tab.0.right" timestamp="1599074256478">
+      <screen x="1920" y="0" width="1280" height="680" />
     </state>
-    <state width="1493" height="666" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1598864639219" />
-    <state width="1237" height="77" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1280.680@1920.0.1280.680" timestamp="1598684631562" />
+    <state width="1493" height="649" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1599071021399" />
+    <state width="1237" height="379" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1280.680@1920.0.1280.680" timestamp="1599074256478" />
     <state width="1493" height="560" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.720.1240@0.0.1536.824" timestamp="1598891565798" />
     <state width="1493" height="343" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598884792062" />
     <state width="1877" height="755" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599030534421" />

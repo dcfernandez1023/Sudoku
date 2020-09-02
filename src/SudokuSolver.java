@@ -2,17 +2,15 @@
 ALGORITHM BEING IMPLEMENTED:
 *place number (1-9 starting from 1) in cell
 *if placement is valid (valid in row, col, and box)
-    *then proceed to next cell (proceed to next iteration of loop)
+    *then proceed to next cell (recursively call function)
 *if placement is not valid
     *then leave the current cell as 0, backtrack to the previous cell -- repeat
 */
 
-import java.util.Arrays;
-
 public class SudokuSolver {
     private SudokuBoard sudokuBoard;
     private int[][] board;
-    public int numBackTracks;
+    private int numBackTracks;
 
     public SudokuSolver(SudokuBoard board) {
         this.sudokuBoard = board;
@@ -31,11 +29,14 @@ public class SudokuSolver {
 
         //base case
         if(cellCheck[0] == 1) {
-            if(this.validateBoard()) {
-                return true;
-            }
+            return this.validateBoard();
+        }
+
+        //invalid board check (if board cannot be solved with the inputs the user gave)
+        if(cellCheck[0] == -1) {
             return false;
         }
+
         //sets the row-col position to add number to next
         rowToFill = cellCheck[1];
         colToFill = cellCheck[2];
@@ -54,16 +55,30 @@ public class SudokuSolver {
         return false;
     }
 
+    public void printResults(boolean solved) {
+        System.out.println("---------------------");
+        System.out.println("~~ SUDOKU SOLVER RESULTS ~~");
+        System.out.println("");
+        System.out.println("Sudoku Board Solved: " + solved);
+        System.out.println("Number of back-tracks used: " + this.numBackTracks);
+        System.out.println("");
+        System.out.println(this.sudokuBoard.toString());
+    }
+
     /*
         * params:
              * int rowNum -- row number (0-8)
              * int colNum -- col number (0-8)
         * description: checks if all cells contain a number and returns an int[] with 0 (false) and the positions of where the next
-                        number should be filled; an int[] with 1 (true) if nothing else needs to be filled
+                       number should be filled; an int[] with 1 (true) if nothing else needs to be filled; an int[] with -1 (invalid board)
+                       if the inputs that the user entered on the board make it impossible to complete the board
         * return: int[]
     */
-    private int[] checkCells() {
+    private int[] checkCells() throws Exception {
         for(int i = 0; i < this.board.length; i++) {
+            if(!this.validateBoard()) {
+                return new int[] {-1};
+            }
             int[] row = this.board[i];
             for(int x = 0; x < row.length; x++) {
                 if(row[x] == 0) {

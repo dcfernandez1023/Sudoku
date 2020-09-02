@@ -24,7 +24,7 @@ public class SudokuBoard {
             int[] row = this.board[i];
             int x = 0;
             while(x < row.length) {
-                System.out.println("Enter a number (0-9) for Row " + i + ", Col " + x + ":");
+                System.out.println("Enter a number (0-9) for Row " + i + " Col " + x + ", or '-1' to generate a board with the existing inputs:");
                 String input = scanner.nextLine();
                 if(input.equals("-1")) {
                     return;
@@ -40,12 +40,12 @@ public class SudokuBoard {
                         System.out.println("");
                     }
                     else {
-                        System.out.println(val + " is not a valid Sudoku input. Please enter a number from 0-9.");
+                        System.out.println("'" + val + "'" + " is not a valid Sudoku input. Please enter a number from 0-9.");
                         System.out.println("");
                     }
                 }
                 else {
-                    System.out.println(input + " is not a valid Sudoku input. Please enter a number from 0-9.");
+                    System.out.println("'" + input + "'" + " is not a valid Sudoku input. Please enter a number from 0-9.");
                     System.out.println("");
                 }
             }
