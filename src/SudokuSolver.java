@@ -7,15 +7,18 @@ ALGORITHM BEING IMPLEMENTED:
     *then leave the current cell as 0, backtrack to the previous cell -- repeat
 */
 
+import java.util.Arrays;
+
 public class SudokuSolver {
+    private SudokuBoard sudokuBoard;
     private int[][] board;
-    //private int[] constantColPositions;
-    //private int[] constantRowPositions;
+    public int numBackTracks;
 
-    public SudokuSolver(int[][] sudokuBoard) {
-        this.board = sudokuBoard;
+    public SudokuSolver(SudokuBoard board) {
+        this.sudokuBoard = board;
+        this.board = this.sudokuBoard.getBoard();
+        this.numBackTracks = 0;
     }
-
     /*
         * params: none
         * description: will validate sudoku board by trial and error through backtracking -- this function is recursive
@@ -25,61 +28,38 @@ public class SudokuSolver {
         int rowToFill;
         int colToFill;
         int[] cellCheck = this.checkCells();
+
         //base case
-        if(cellCheck[0] == 0) {
-            return true;
+        if(cellCheck[0] == 1) {
+            if(this.validateBoard()) {
+                return true;
+            }
+            return false;
         }
+        //sets the row-col position to add number to next
         rowToFill = cellCheck[1];
         colToFill = cellCheck[2];
         for(int i = 1; i <= this.board.length; i++) {
-            if(this.isValidPlacement(rowToFill, colToFill, i)) {
-                this.makePlacement(rowToFill, colToFill, i);
+            if(this.isValidPlacement(rowToFill, colToFill, i, 0)) {
                 //progress towards base case
-                if(solveSudoku()) {
+                this.sudokuBoard.updateBoard(rowToFill, colToFill, i);
+                if(this.solveSudoku()) {
                     return true;
                 }
-                //backtracking step -- this will execute if all values (1-9) have been tried within this for loop but failed
-                this.makePlacement(rowToFill, colToFill, 0);
+                //backtracking step -- this will execute if all values (1-9) have been tried but failed
+                this.sudokuBoard.updateBoard(rowToFill, colToFill, 0);
+                this.numBackTracks++;
             }
         }
         return false;
-    }
-
-    @Override
-    public String toString() {
-        String strBoard = "";
-        for(int i = 0; i < this.board.length; i++) {
-            //loop thru row
-            int[] row = this.board[i];
-            for(int x = 0; x < row.length; x++) {
-                //loop thru col
-                int val = row[x];
-                if(x == row.length - 1) {
-                    strBoard = strBoard + val + "\n";
-                    if(i == 2 || i == 5) {
-                        for(int n = 0; n < 60; n++) {
-                            strBoard = strBoard + "-";
-                        }
-                        strBoard = strBoard + "\n";
-                    }
-                }
-                else {
-                    if(x == 3 || x == 6) {
-                        strBoard = strBoard + "|    ";
-                    }
-                    strBoard = strBoard + val + "     ";
-                }
-            }
-        }
-        return strBoard;
     }
 
     /*
         * params:
              * int rowNum -- row number (0-8)
              * int colNum -- col number (0-8)
-        * description: checks if all cells contain a number and returns an int[] with the position of where the next
-                        number should be filled; an int[] with 0 if nothing needs to be filled
+        * description: checks if all cells contain a number and returns an int[] with 0 (false) and the positions of where the next
+                        number should be filled; an int[] with 1 (true) if nothing else needs to be filled
         * return: int[]
     */
     private int[] checkCells() {
@@ -87,11 +67,15 @@ public class SudokuSolver {
             int[] row = this.board[i];
             for(int x = 0; x < row.length; x++) {
                 if(row[x] == 0) {
-                    return new int[] {1, i, x};
+                    // 0 = false -- cells have not yet been filled 
+                    // i = next row to check
+                    // x = next col to check
+                    return new int[] {0, i, x};
                 }
             }
         }
-        return new int[] {0};
+        // 1 = true -- all cells have been filled 
+        return new int[] {1};
     }
 
     /*
@@ -99,11 +83,15 @@ public class SudokuSolver {
             * int rowNum -- row number (0-8)
             * int colNum -- col number (0-8)
             * int val -- value (1-9) to be added at board[row][col]
+            * int countMax -- the amount of times you want a number to be counted within its corresponding row, col, & 3x3 box to determine if its placement is valid
         * description: determines if value can be placed at a given row col position
         * return: boolean -- true if placement on board is valid; false if not
     */
-    private boolean isValidPlacement(int rowNum, int colNum, int val) throws Exception {
-        if(val < 1 || val > 9) {
+    private boolean isValidPlacement(int rowNum, int colNum, int val, int countMax) throws Exception {
+        if(val == 0) {
+            return true;
+        }
+        if(val < 0 || val > 9) {
             throw new Exception("Invalid Sudoku Input: " + val + " " + "cannot be placed on the board.");
         }
         int[] row;
@@ -116,7 +104,7 @@ public class SudokuSolver {
                     count++;
                 }
             }
-            if(count > 0)
+            if(count > countMax)
             {
                 return false;
             }
@@ -130,7 +118,7 @@ public class SudokuSolver {
                 count++;
             }
         }
-        if(count > 0) {
+        if(count > countMax) {
             return false;
         }
 
@@ -226,24 +214,24 @@ public class SudokuSolver {
                 }
             }
         }
-        if(count > 0) {
+        if(count > countMax) {
             return false;
         }
         return true;
     }
 
-    /*
-        * params:
-             * int rowNum -- row number (0-8)
-             * int colNum -- col number (0-8)
-             * int val -- value (1-9) to be added at board[row][col]
-         * description: places value at a given row col position
-         * return: none
-     */
-    private void makePlacement(int rowNum, int colNum, int val) throws Exception {
-        if(val < 0 || val > 9) {
-            throw new Exception("Invalid Sudoku Input");
+
+    private boolean validateBoard() throws Exception {
+        for(int n = 1; n <= this.board.length; n++) {
+            for (int i = 0; i < this.board.length; i++) {
+                int[] row = this.board[i];
+                for (int x = 0; x < row.length; x++) {
+                    if (!this.isValidPlacement(i, x, row[x], 1)) {
+                        return false;
+                    }
+                }
+            }
         }
-        this.board[rowNum][colNum] = val;
+        return true;
     }
 }
