@@ -26,14 +26,12 @@ public class Sudoku {
             String option = scanner.nextLine();
             if(option.equals("e")) {
                 boolean isSolved = sudoku.solver.solveSudoku();
-                System.out.println("Sudoku Board Solved: " + isSolved);
-                System.out.println(sudoku.board.toString());
+                sudoku.solver.printResults(isSolved);
                 System.exit(0);
             }
             sudoku.board.customizeBoard();
             boolean isSolved = sudoku.solver.solveSudoku();
-            System.out.println("Sudoku Board Solved: " + isSolved);
-            System.out.println(sudoku.board.toString());
+            sudoku.solver.printResults(isSolved);
             System.exit(0);
         }
         catch(Exception e) {
