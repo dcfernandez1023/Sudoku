@@ -24,7 +24,7 @@ public class Sudoku {
          * description: handles any exception thrown in the main method, prints the exception, and traces its stack
          * return: none
      */
-    private static void handleException(Exception e) {
+    public static void handleException(Exception e) {
         System.out.println("Something went wrong!  Error message: " + e.getMessage());
         System.out.println("~~ Stack Trace ~~");
         e.printStackTrace();
