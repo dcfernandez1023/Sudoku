@@ -8,15 +8,27 @@ ALGORITHM BEING IMPLEMENTED:
 */
 
 public class SudokuSolver {
+    /* data members:
+        * sudokuBoard - SudokuBoard object as a wrapper for a 9x9 Sudoku board
+        * board - the actual 9x9 int[][] matrix
+        * numBackTracks - number of times the algorithm must backtrack to solve Sudoku
+    */
     private SudokuBoard sudokuBoard;
     private int[][] board;
     private int numBackTracks;
 
+    /*
+        * params:
+            * SudokuBoard board - a SudokuBoard object
+        * description: sets data members
+        * return: none
+    */
     public SudokuSolver(SudokuBoard board) {
         this.sudokuBoard = board;
         this.board = this.sudokuBoard.getBoard();
         this.numBackTracks = 0;
     }
+
     /*
         * params: none
         * description: will validate sudoku board by trial and error through backtracking -- this function is recursive
@@ -55,6 +67,12 @@ public class SudokuSolver {
         return false;
     }
 
+    /*
+        * params:
+            * boolean solved - boolean representing whether or not the Sudoku board has been successfully solved or not
+        * description: prints results of the algorithm to solve Sudoku
+        * return: none
+    */
     public void printResults(boolean solved) {
         System.out.println("---------------------");
         System.out.println("~~ SUDOKU SOLVER RESULTS ~~");
@@ -74,7 +92,7 @@ public class SudokuSolver {
                        if the inputs that the user entered on the board make it impossible to complete the board
         * return: int[]
     */
-    private int[] checkCells() throws Exception {
+    private int[] checkCells() {
         for(int i = 0; i < this.board.length; i++) {
             if(!this.validateBoard()) {
                 return new int[] {-1};
@@ -102,12 +120,9 @@ public class SudokuSolver {
         * description: determines if value can be placed at a given row col position
         * return: boolean -- true if placement on board is valid; false if not
     */
-    private boolean isValidPlacement(int rowNum, int colNum, int val, int countMax) throws Exception {
+    private boolean isValidPlacement(int rowNum, int colNum, int val, int countMax) {
         if(val == 0) {
             return true;
-        }
-        if(val < 0 || val > 9) {
-            throw new Exception("Invalid Sudoku Input: " + val + " " + "cannot be placed on the board.");
         }
         int[] row;
         //determine if placement in this row is valid
@@ -235,8 +250,12 @@ public class SudokuSolver {
         return true;
     }
 
-
-    private boolean validateBoard() throws Exception {
+    /*
+        * params: none
+        * description: validates the board; returns true if board is valid; false if not
+        * return: boolean
+    */
+    private boolean validateBoard() {
         for(int n = 1; n <= this.board.length; n++) {
             for (int i = 0; i < this.board.length; i++) {
                 int[] row = this.board[i];

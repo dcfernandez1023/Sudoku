@@ -1,22 +1,50 @@
 import java.util.Scanner;
 
 public class SudokuBoard {
+    /* data members:
+        * board - 9x9 int[][] matrix
+    */
     private int[][] board;
 
-    //constructor for an empty board
+    /*
+        * params: none
+        * description: constructs SudokuBoard object and sets data member
+        * return: none
+    */
     public SudokuBoard() {
         this.board = new int[9][9];
     }
 
-    //constructor for a filled board
-    public SudokuBoard(int[][] board) {
+    /*
+         * params:
+            * int[][] board - 9x9 int[][] matrix
+         * description: constructs SudokuBoard object and sets data member
+         * return: none
+     */
+    public SudokuBoard(int[][] board) throws Exception {
+        try {
+            board[8][8] = 0;
+        }
+        catch(IndexOutOfBoundsException iobe) {
+            throw new IndexOutOfBoundsException();
+        }
         this.board = board;
     }
 
+    /*
+         * params: none
+         * description: getter method for this.board
+         * return: int[][]
+     */
     public int[][] getBoard () {
         return this.board;
     }
 
+    /*
+         * params: none
+         * description: instructs user what to do, accepts user inputs, and fills row-cols on the board with valid inputs
+         * return: none
+     */
     public void customizeBoard() {
         Scanner scanner = new Scanner(System.in);
         int i = 0;
@@ -54,6 +82,11 @@ public class SudokuBoard {
 
     }
 
+    /*
+         * params: none
+         * description: overridden toString() method
+         * return: int[][]
+     */
     @Override
     public String toString() {
         String strBoard = "";
@@ -95,12 +128,18 @@ public class SudokuBoard {
         this.board[row][col] = val;
     }
 
+    /*
+         * params:
+            * String input
+         * description: determines if input can be converted to an int or not
+         * return: boolean
+     */
     private boolean isInt(String input) {
         if(input == null) {
             return false;
         }
         try {
-            int val = Integer.parseInt(input);
+            Integer.parseInt(input);
         }
         catch(NumberFormatException nfe) {
             return false;
