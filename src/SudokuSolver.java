@@ -41,7 +41,7 @@ public class SudokuSolver {
 
         //base case
         if(cellCheck[0] == 1) {
-            return this.validateBoard();
+           return true;
         }
 
         //invalid board check (if board cannot be solved with the inputs the user gave)
@@ -93,10 +93,11 @@ public class SudokuSolver {
         * return: int[]
     */
     private int[] checkCells() {
+        if(!this.validateBoard()) {
+            // -1 = invalid -- all cells have been filled but does not satisfy Sudoku rules
+            return new int[] {-1};
+        }
         for(int i = 0; i < this.board.length; i++) {
-            if(!this.validateBoard()) {
-                return new int[] {-1};
-            }
             int[] row = this.board[i];
             for(int x = 0; x < row.length; x++) {
                 if(row[x] == 0) {

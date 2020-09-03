@@ -41,7 +41,7 @@ public class Sudoku {
 
             //print some welcome messages and instructions
             System.out.println("~~ SUDOKU BOARD SOLVER ~~");
-            System.out.println("Enter 'e' to generate a solved Sudoku board from scratch, or enter any key to manually create your own Sudoku board.");
+            System.out.println("Enter 'e' for the computer to generate a solved Sudoku board from scratch, or enter any key to manually create your own Sudoku board.");
 
             //get initial inputs that determine the course of action for the algorithm
             String option = scanner.nextLine();

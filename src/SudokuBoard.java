@@ -49,35 +49,38 @@ public class SudokuBoard {
         Scanner scanner = new Scanner(System.in);
         int i = 0;
         while(i < this.board.length) {
+            System.out.println("Enter 9 numbers between 0-9 for Row " + i + ", or '-1' to generate a board with the current rows and cols:");
+            String input = scanner.nextLine();
+            if(input.equals("-1")) {
+                return;
+            }
+            if(input.length() != 9) {
+                System.out.println("ERROR: " + "'" + input + "'" + " is an invalid row input. You must enter 9 numbers, with each number being 0-9 and no spaces between each number.");
+                System.out.println("");
+                continue;
+            }
+            if(!this.isRowInputsValid(input)) {
+                System.out.println("ERROR: " + "'" + input + "'" + " is not a valid Sudoku input. Please enter 9 numbers from 0-9 with no spaces between each number.");
+                System.out.println("");
+                continue;
+            }
             int[] row = this.board[i];
             int x = 0;
             while(x < row.length) {
-                System.out.println("Enter a number (0-9) for Row " + i + " Col " + x + ", or '-1' to generate a board with the existing inputs:");
-                String input = scanner.nextLine();
-                if(input.equals("-1")) {
-                    return;
-                }
-                if(this.isInt(input)) {
-                    int val = Integer.parseInt(input);
-                    if(0 <= val && val <= 9) {
+                //System.out.println("Enter a number (0-9) for Row " + i + " Col " + x + ", or '-1' to generate a board with the existing inputs:");
+                if(this.isInt(Character.toString(input.charAt(x)))) {
+                    int val = Integer.parseInt(Character.toString(input.charAt(x)));
+                    if (0 <= val && val <= 9) {
                         this.updateBoard(i, x, val);
                         x++;
-                        System.out.println("This is what your current Sudoku board looks like:");
-                        System.out.println(this.toString());
-                        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                        System.out.println("");
                     }
-                    else {
-                        System.out.println("'" + val + "'" + " is not a valid Sudoku input. Please enter a number from 0-9.");
-                        System.out.println("");
-                    }
-                }
-                else {
-                    System.out.println("'" + input + "'" + " is not a valid Sudoku input. Please enter a number from 0-9.");
-                    System.out.println("");
                 }
             }
             i++;
+            System.out.println("This is what your current Sudoku board looks like:");
+            System.out.println(this.toString());
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("");
         }
 
     }
@@ -143,6 +146,27 @@ public class SudokuBoard {
         }
         catch(NumberFormatException nfe) {
             return false;
+        }
+        return true;
+    }
+
+    /*
+         * params:
+            * String input
+         * description: determines if the 9 numbers the user entered for the row are valid numbers
+         * return: boolean
+     */
+    private boolean isRowInputsValid(String input) {
+        for (int x = 0; x < input.length(); x++) {
+            if (this.isInt(Character.toString(input.charAt(x)))) {
+                int val = Integer.parseInt(Character.toString(input.charAt(x)));
+                if (0 > val || val > 9) {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
         }
         return true;
     }
