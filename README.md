@@ -1,0 +1,28 @@
+CS 245-01 LAB ASSIGNMENT 1: SUDOKU
+
+* PEOPLE WHO WORKED ON THIS ASSIGNMENT:
+    * Dominic Fernandez
+
+* RUNTIME COMPLEXITY
+    * O(n^m), where n is the number of possible values in each cell and m is the number of blank cells
+
+* SPACE COMPLEXITY
+    * O(n*n), because a matrix is needed to store the n x n (9x9) Sudoku board
+
+* DESCRIPTION OF CLASSES
+    * This project contains 3 classes: Sudoku, SudokuBoard, and SudokuSolver.
+    * Class Sudoku is the driver code for this project and contains a main() method where instantiations of SudokuBoard and SudokuSolver interact.
+    * Class SudokuBoard is a wrapper for the 9x9 matrix and contains methods to print and update the 9x9 matrix.
+    * Class SudokuSolver requires a SudokuBoard in order to be instantiated and contains methods to successfully solve Sudoku.
+
+* EXPECTED INTERACTIONS AND RESULTS
+    * The driver code will prompt the user by asking whether or not he/she would like the computer to generate a board from scratch
+    * or if the user wants to manually input 81 values for the 9x9 matrix.
+    * If the user enters 'e', then the program will output a solved Sudoku board from scratch (empty board that the computer solved).
+    * If the user enters any other character besides 'e', the program will prompt the user to enter values to be inputted on the board.
+    * The program will only accept values 0-9, and will notify the user if his/her inputs are invalid and ask him/her to re-enter an input.
+    * The user can enter -1 to generate a board with the values they have already inputted.
+    * If the user enters values that do not follow Sudoku rules (i.e. the number '1' appears twice in the same row),
+    * then upon generating the board the program will tell the user that a valid Sudoku board could not be generated.
+    * If the user enters values that satisfy the rules of Sudoku, then the program will generate the board successfully,
+    * print the board, and provide the number of backtracks used, and indicate that the board was generated successfully.
